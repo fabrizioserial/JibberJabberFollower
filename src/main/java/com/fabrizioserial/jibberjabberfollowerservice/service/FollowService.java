@@ -3,19 +3,22 @@ package com.fabrizioserial.jibberjabberfollowerservice.service;
 import com.fabrizioserial.jibberjabberfollowerservice.dto.CreateFollowDto;
 import com.fabrizioserial.jibberjabberfollowerservice.dto.DeleteFollowDto;
 import com.fabrizioserial.jibberjabberfollowerservice.dto.FollowDto;
-import com.fabrizioserial.jibberjabberfollowerservice.entity.Follow;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.UUID;
 
 public interface FollowService {
-    Follow createFollow(CreateFollowDto createFollowDto);
+    void follow(UUID userId);
 
-    void deleteFollow(DeleteFollowDto deleteFollowDto);
+    Page<FollowDto> getFollowers(UUID userId, int page, int size);
 
-    List<FollowDto> getFollowersList(UUID followedId);
+    Page<FollowDto> getFollowing(UUID userId, int page, int size);
 
-    List<FollowDto> getFollowedList(UUID followerId);
+    void unfollow(UUID userId, UUID followingId);
+
+    boolean isFollowed(UUID userId);
 
 }
