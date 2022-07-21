@@ -91,9 +91,9 @@ jobs:
         with:
           host: ${{ secrets.VM_HOST_PROD }}
           username: ${{ secrets.VM_USERNAME_PROD }}
-          key: ${{ secrets.VM_KEY_PROD }}
+          password: ${{ secrets.VM_PASSWORD_PROD }}
           script: |
-            cd JibberJabberCompose
+            cd jibberJabberBlackOps2
             docker compose stop follow-api
             docker compose pull follow-api
             docker compose up -d follow-api
